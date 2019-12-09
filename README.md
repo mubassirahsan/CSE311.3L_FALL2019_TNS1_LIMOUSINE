@@ -1,8 +1,6 @@
 # CSE311.3L_FALL2019_TNS1_LIMOUSINE
 
-# Project Title
-
-Gas Cylinder Home Delivery System
+# Gas Cylinder Home Delivery System
 
 ##Guide
 
