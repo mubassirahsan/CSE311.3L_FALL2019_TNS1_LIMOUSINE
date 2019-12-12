@@ -23,4 +23,5 @@ who participated in this project.
 
 ## License
 
-This project is licensed under the "Free For All" law of 2077
+This project was worked on for CSE 311 lab course on Fall 2019. 
+If you wish to contribute or require this for a personal project, send a request.
