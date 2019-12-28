@@ -1,3 +1,10 @@
+<?php
+include "connect.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <html>
 
 <head>
@@ -65,19 +72,40 @@
 <input type="text" name="location"/>
 </p>
 
+    <?php
+    if (isset($_POST['registration'])) {
+        $fname = $_POST['fname'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+        $phone = $_POST['phone'];
+        $area = $_POST['area'];
+        $state = $_POST['state'];
+        if ($password == $cpassword) {
+            $query = "SELECT * FROM userlist WHERE email = ('$email')";
+            $query_run = mysqli_query($con, $query);
+            if (mysqli_num_rows($query_run) > 0) {
+                echo '<script type="text/javascript"> alert("User Already Exists.")</script>';
+            } else {
+                $query1 = "INSERT INTO userlist (fname,email,password,phone, location, sub) VALUES ('$fname','$email','$password','$phone','$area','$state')";
+                $query_run = mysqli_query($con, $query1);
+                if ($query_run) {
+                    echo '<script type="text/javascript"> alert("Member Add Successfully !!")</script>';
+                } else {
+                    echo (mysqli_error($con));
+                    echo '<script type="text/javascript"> alert("!! Error !!")</script>';
+                }
+            }
+        } else {
+            echo '<script type="text/javascript"> alert("Please Enter the Values")</script>';
+        }
+    }
+    mysqli_close($con);
+    ?>
 
-<p>
-<strong>Do you want Premium Subscription?</strong><br/>
-<select name="subscription">
-<option value = "yes">Yes</option>
-<option value = "no">No</option>
-</select>
-</p>
 
-<p>
-<input type="submit" name="register" value="Register"/>
-</p>
 
-</form>
+
+</body>
 
 </html>
